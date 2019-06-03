@@ -22,11 +22,35 @@ foo3({})//zhangsan 12
 foo3({ name: 'lisi', age: 14 })//lisi 14
 
 //rest 参数
+//注：rest参数后面不能有其他参数
 function foo4(a, ...rest) {
     console.log(a);//1
     console.log(rest);//[1,2,3,4,5,6,7]
 }
 foo4(1, 2, 3, 4, 5, 6, 7)
+
+//作用域
+{
+    let x = 'test'
+    function test2(x, y = x) {
+        console.log(x, y)//kill kill
+    }
+    test2('kill')
+}
+{
+    let x = 'test'
+    function test2(x, y = x) {
+        console.log(x, y)//undefined undefined
+    }
+    test2()
+}
+{
+    let x = 'test'
+    function test2(c, y = x) {
+        console.log(x, y)//kill test
+    }
+    test2('kill')
+}
 
 //...扩展运算符  将数组专程单个的数据项
 let arr = [1, 2, 3, 4, 5, 6]
@@ -87,3 +111,15 @@ let foo10 = (...rest) => {
     console.log(rest[0]);//1
 }
 foo10(1, 2)
+
+//尾调用 函数最后一步返回一个函数  
+//一个函数依赖于另外的函数  函数嵌套很多 可以使用尾调用优化
+{
+    function tail(x) {
+        console.log(x)
+    }
+    function fx(x) {
+        return tail(x)
+    }
+    fx(123)//123
+}
