@@ -44,3 +44,17 @@ console.log(tag);
 //<span>hello</span>
 //<span>nihaoya</span>
 // </div> 
+
+//str.repeat()
+{
+    let a = 'abc'
+    console.log(a.repeat(2));//abc abc
+}
+
+//str.padStart() str.padEnd()
+{
+    let str = '1'
+    console.log(str.padStart(2,'0'));//01  补白  要求字符串 两位 不够的话 补0 从前面补
+    console.log(str.padEnd(2,'0'));//10  从后面补
+}
+
